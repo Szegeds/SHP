@@ -1,5 +1,6 @@
-<?php 
-include "check-login.php";
+<?php
+include "../include/include_web.php"; 
+include "../include/check-login.php"; 
  ?>
 <!doctype html>
 <html>
@@ -7,51 +8,72 @@ include "check-login.php";
 <meta charset="utf-8">
 <title>Data Store</title>
 <style>
-	@import "global.css";
-	table {
-		margin: 20px auto;
-		border-collapse: collapse;
+	
+	table th {
+		background: #bf80ff;
+		color: #fff;
+		border: solid 1px #bf80ff;
+	}
+	tr:nth-of-type(odd) {
+		background: #fff;
+	}
+	tr:nth-of-type(even) {
+		background: #fff;
+	}
+	td {
+/* 		vertical-align: top; */
+/* 		padding: 3px 0px 3px 5px; */
+		border: solid 1px #bf80ff;
+	}
+	td:first-child, td:first-child {
+		text-align: center;
+	}
+	table tr:hover td {
+		color: #fff;
+		background: #bf80ff;
+		border: solid 1px #fff;
+		
 	}
 	caption {
 		text-align: left;
 		padding-bottom: 3px !important;
 	}
-	td:nth-child(1) {
-		width: 250px;
-		text-align: left !important;
-	}
-	td:nth-child(2) {
-		width: 200px;
-		text-align: left !important;
-	}
-	td:nth-child(3), td:nth-child(4) {
-		width: 80px;
-	}
-	td:nth-child(5), td[colspan]+td {
-		width: 100px;
-	}
-	td:nth-child(6), tr:last-child td:last-child {
-		width: 30px;
-	}
-	table th {
-		background: green;
-		color: yellow;
-		padding: 5px;
-		border-right: solid 1px white;
-		font-size:12px;
-	}
-	tr:nth-of-type(odd) {
-		background: lavender;
-	}
-	tr:nth-of-type(even) {
-		background: whitesmoke;
-	}
-	td {
-		text-align: center;
-		vertical-align: top;
-		padding: 3px 0px 3px 3px;
-		border-right: solid 1px white;
-	}
+/* 	td:nth-child(1) { */
+/* 		width: 250px; */
+/* 		text-align: left !important; */
+/* 	} */
+/* 	td:nth-child(2) { */
+/* 		width: 200px; */
+/* 		text-align: left !important; */
+/* 	} */
+/* 	td:nth-child(3), td:nth-child(4) { */
+/* 		width: 80px; */
+/* 	} */
+/* 	td:nth-child(5), td[colspan]+td { */
+/* 		width: 100px; */
+/* 	} */
+/* 	td:nth-child(6), tr:last-child td:last-child { */
+/* 		width: 30px; */
+/* 	} */
+/* 	table th { */
+/* 		background: green; */
+/* 		color: yellow; */
+/* 		padding: 5px; */
+/* 		border-right: solid 1px white; */
+/* 		font-size:12px; */
+/* 	} */
+/* 	tr:nth-of-type(odd) { */
+/* 		background: lavender; */
+/* 	} */
+/* 	tr:nth-of-type(even) { */
+/* 		background: whitesmoke; */
+/* 	} */
+/* 	td { */
+/* 		text-align: center; */
+/* 		vertical-align: top; */
+/* 		padding: 3px 0px 3px 3px; */
+/* 		border-right: solid 1px white; */
+/* 	} */
 	a.delete, a.order-detail {
 		font-size: 11px;
 		border: solid 1px #999;
@@ -65,13 +87,13 @@ include "check-login.php";
 		color:red;
 		background: #ffc;
 	}
-	tr:last-child td {
-		border-top: solid 1px white;
-		background: powderblue !important;
-		padding: 5px;
-		font-weight: bold;
-		text-align: center !important;	
-	}
+/* 	tr:last-child td { */
+/* 		border-top: solid 1px white; */
+/* 		background: powderblue !important; */
+/* 		padding: 5px; */
+/* 		font-weight: bold; */
+/* 		text-align: center !important;	 */
+/* 	} */
 	caption > div {
 		float: right;
 		color: navy;
@@ -130,11 +152,16 @@ $(function() {
 </head>
 
 <body>
-<?php include "top.php"; ?>
+<?php include "../include/header.php"; ?>
+
+   <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-right">
+		<?php include "../include/side_menu.php"; ?>
+		
 <article>
 <?php
-include "dblink.php";
-include "lib/pagination.php";
+include "../include/dblink.php";
+include "../../lib/pagination.php";
 
 $sql = "SELECT *, DATE_FORMAT(orders.order_date, '%d-%m-%Y') AS order_date
  			FROM orders ORDER BY order_id DESC";
@@ -152,15 +179,16 @@ while($data = mysqli_fetch_array($r)) {
 	$order_id = $data['order_id'];
 	$date =  $data['order_date'];
 	$cust_id = $data['cust_id'];
-	$img_pay = "images/no.png";
-	$img_delivery = "images/no.png";
+	$img_pay = "../../images/no.png";
+	$img_delivery = "../../images/no.png";
 	if($data['paid'] == "yes") {
-		$img_pay = "images/yes.png";
+		$img_pay = "../../images/yes.png";
 	}
 	if($data['delivery'] == "yes") {
-		$img_delivery = "images/yes.png";
+		$img_delivery = "../../images/yes.png";
 	}
 ?>
+
 <table>
 <caption>
    	 วันที่: <?php echo $date; ?> &nbsp;รหัสการสั่งซื้อ: <?php echo $order_id; ?>
@@ -189,7 +217,10 @@ while($data = mysqli_fetch_array($r)) {
     <td><?php echo $order['quantity']; ?></td>
     <td><?php echo $order['price']; ?></td>
    	<td><?php echo number_format($sub_total); ?></td>
- 	<td><a href="#" class="delete" data-id="<?php echo $order['item_id']; ?>">ลบ</a></td>
+ 	<td><a class="delete" id="<?php echo $order['item_id']; ?>" href=""><span class="fa fa-trash-o"></span></a></td>
+    
+    
+
 </tr>
 <?php
 		$grand_total += $order['quantity'] * $order['price'];
@@ -207,6 +238,9 @@ if(page_total() > 1) { 	 //ให้แสดงหมายเลขเพจ�
 }
 mysqli_close($link);
 ?>
+
 </article>
+</div></div>
+
 </body>
 </html>
