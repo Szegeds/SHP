@@ -2,7 +2,7 @@
 include "check-login.php";
 include "dblink.php";
 sleep(1);    
-$order_id = $_POST['order_id'];
+$order_id = $_POST['order_id'];   
 $sql = "UPDATE orders SET delivery = 'yes' WHERE order_id = '$order_id'";
 mysqli_query($link, $sql);
 
