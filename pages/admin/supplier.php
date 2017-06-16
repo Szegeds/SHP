@@ -170,6 +170,11 @@ function ajaxSend(dataJSON) {
 </head>
 
 <body>
+<?php include "../include/header.php"; ?>
+<div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-right">
+		<?php include "../include/side_menu.php"; ?>
+        <div class="col-12 col-md-9">
 <article>
 <?php
 include "../include/dblink.php";
@@ -238,5 +243,6 @@ if(page_total() > 1) { 	 //ให้แสดงหมายเลขเพจ�
 </div>
 
 </article>
+</div></div>
 </body>
 </html>
