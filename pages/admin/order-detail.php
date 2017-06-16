@@ -7,11 +7,10 @@ include "check-login.php";
 <meta charset="utf-8">
 <title>Data Store</title>
 <style>
-	@import "global.css";
+	@import "global.css";   
 	caption {
 		text-align: left;
-		padding-bottom: 3px !important;
-	}
+		padding-bottom: 3px !important;	}
 	td:nth-child(1) {
 		width: 50px;
 	}
