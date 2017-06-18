@@ -1,5 +1,5 @@
 <?php
-include "include_web.php";
+include "../include_web.php";
 ?>
 <style>
 .bg-lavender{
