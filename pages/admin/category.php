@@ -134,15 +134,18 @@ while($cat = mysqli_fetch_array($result)) {
 }
 ?>
 </table>
-
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
 
 <?php
 if(page_total() > 1) { 	 //ให้แสดงหมายเลขเพจเฉพาะเมื่อมีมากกว่า 1 เพจ
-	echo '<p id="pagenum">';
+	echo '<li class="page-item"><p id="pagenum">';
 	page_echo_pagenums();
-	echo '</p>';
+	echo '</p></li>';
 }
 ?>
+</ul>
+</nav>
 </article>
           
           

@@ -184,10 +184,10 @@ function _page_element($e,$p,$t,$q="") {
 	}
 	
 	if($e=="a") {
-		return "<a href=\"{$_SERVER['PHP_SELF']}?$q\" class=\"page-$_rand\">$t</a>";
+		return "<li class='page-item'><a href=\"{$_SERVER['PHP_SELF']}?$q\" class=\"page-link\">$t</a></li>";
 	}
 	else if($e=="span") {
-		return "<span class=\"page-$_rand\">$t</span>";
+		return "<li class='page-item'><span class=\"page-link\">$t</span></li>";
 	}
 }
 
@@ -369,29 +369,29 @@ function _page_styles() {
 		$rand = rand();
 	} while($rand == $_rand);
 	$_rand = $rand;
-	echo "<style>
-				a.page-$_rand {
-					color: $_color;
-					border: $_border_style $_border_width $_border_color;
-					background: $_bg_color;
-					text-decoration: $_text_decoration;
-				}
-				a.page-$_rand:hover {
-					color: $_hover_color;
-					background: $_bg_hover_color;
-				}
-				span.page-$_rand {
-					color: $_cur_color;
-					border: $_cur_border_style $_cur_border_width $_cur_border_color;
-					background: $_cur_bg_color;
-				}
-				a.page-$_rand, span.page-$_rand {
-					font: $_font_bold $_font_italic normal $_font_size $_font_family;
-					font-size: $_font_size;
-					border-radius: $_border_radius;
-					padding: 3px;		
-					margin: 3px 3px;				
-				}
-			</style>";
+// 	echo "<style>
+// 				a.page-$_rand {
+// 					color: $_color;
+// 					border: $_border_style $_border_width $_border_color;
+// 					background: $_bg_color;
+// 					text-decoration: $_text_decoration;
+// 				}
+// 				a.page-$_rand:hover {
+// 					color: $_hover_color;
+// 					background: $_bg_hover_color;
+// 				}
+// 				span.page-$_rand {
+// 					color: $_cur_color;
+// 					border: $_cur_border_style $_cur_border_width $_cur_border_color;
+// 					background: $_cur_bg_color;
+// 				}
+// 				a.page-$_rand, span.page-$_rand {
+// 					font: $_font_bold $_font_italic normal $_font_size $_font_family;
+// 					font-size: $_font_size;
+// 					border-radius: $_border_radius;
+// 					padding: 3px;		
+// 					margin: 3px 3px;				
+// 				}
+// 			</style>";
 }
  ?>
