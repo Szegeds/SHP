@@ -124,11 +124,11 @@ function ajaxSend(dataJSON) {
 </head>
 
 <body>
-<?php include "../include/header.php"; ?>
+<?php include "../include/include_admin/header.php"; ?>
 
  <div class="container-fluid">
       <div class="row row-offcanvas row-offcanvas-right">
-		<?php include "../include/side_menu.php"; ?>
+		<?php include "../include/include_admin/side_menu.php"; ?>
         <div class="col-12 col-md-9">
 <article>
 <?php
